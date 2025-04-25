@@ -1,0 +1,47 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #f0f4ff;
+  color: #333;
+  padding: 2rem;
+  text-align: center;
+}
+
+.container {
+  max-width: 500px;
+  margin: auto;
+  background: white;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #ccc;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+#songList {
+  list-style: none;
+  padding: 0;
+  max-height: 150px;
+  overflow-y: auto;
+  margin-bottom: 1rem;
+}
+
+#songList li {
+  padding: 0.5rem;
+  cursor: pointer;
+}
+
+#songList li:hover {
+  background: #eef;
+}
+
+.controls {
+  margin: 1rem 0;
+}
+
+.volume {
+  margin-top: 1rem;
+}
