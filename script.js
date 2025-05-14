@@ -1,76 +1,60 @@
-const songs = [
-  { name: "Song One", src: "songs/song1.mp3" },
-  { name: "Song Two", src: "songs/song2.mp3" },
-  { name: "Chill Vibe", src: "songs/song3.mp3" },
-];
+document.addEventListener("DOMContentLoaded", function () {
+	const contributionAmountInput = 
+		document.getElementById("contribution-amount");
+	const contributeButton = 
+		document.getElementById("contribute-button");
+	const totalAmount = 
+		document.getElementById("total-amount");
+	const progressBar = 
+		document.getElementById("progress-bar");
+	const projectDetails = 
+		document.querySelector(".project-details"); 
+	// Use querySelector to get 
+	// the first element with the class
 
-let currentIndex = 0;
-let isPlaying = false;
+	const goalAmount = 1000;
+	let totalRaised = 100;
 
-const audio = document.getElementById("audioPlayer");
-const searchInput = document.getElementById("searchInput");
-const songList = document.getElementById("songList");
-const seekBar = document.getElementById("seekBar");
-const volumeBar = document.getElementById("volumeBar");
-const playPauseBtn = document.getElementById("playPauseBtn");
+	contributeButton.addEventListener("click", function () {
+		if (totalRaised >= goalAmount) {
+			alert("Thank You! Goal Already Reached!");
+			return;
+		}
 
-function loadSongs() {
-  songList.innerHTML = "";
-  const search = searchInput.value.toLowerCase();
-  songs
-    .filter((s) => s.name.toLowerCase().includes(search))
-    .forEach((song, index) => {
-      const li = document.createElement("li");
-      li.textContent = song.name;
-      li.onclick = () => playSong(index);
-      songList.appendChild(li);
-    });
-}
+		const amount = 
+			parseFloat(contributionAmountInput.value);
 
-function playSong(index) {
-  currentIndex = index;
-  audio.src = songs[index].src;
-  audio.play();
-  isPlaying = true;
-  playPauseBtn.textContent = "⏸️";
-}
+		if (!isNaN(amount) && amount > 0) {
+			if (totalRaised + amount > goalAmount) {
+				alert(`Thank you for contributing, 
+					but we need $${goalAmount - totalRaised} 
+					only, so please contribute only 
+					$${goalAmount - totalRaised}.`);
+			} else {
+				totalRaised += amount;
+				totalAmount.textContent = 
+					`$${totalRaised.toFixed(2)}`;
+				contributionAmountInput.value = "";
+				updateProgressBar();
 
-function togglePlayPause() {
-  if (isPlaying) {
-    audio.pause();
-    playPauseBtn.textContent = "▶️";
-  } else {
-    audio.play();
-    playPauseBtn.textContent = "⏸️";
-  }
-  isPlaying = !isPlaying;
-}
+				if (totalRaised >= goalAmount) {
+					projectDetails.innerHTML = 
+						`<h3>Thank You for Contributing</h3> 
+						The goal has been reached!`;
+					// Remove the contribute button
+					contributeButton.style.display = "none";
+				} else {
+					alert(`Thank you for contributing $${amount}!`);
+				}
+			}
+		} else {
+			alert("Please enter a valid contribution amount.");
+		}
+	});
 
-function nextSong() {
-  currentIndex = (currentIndex + 1) % songs.length;
-  playSong(currentIndex);
-}
-
-function prevSong() {
-  currentIndex = (currentIndex - 1 + songs.length) % songs.length;
-  playSong(currentIndex);
-}
-
-audio.addEventListener("timeupdate", () => {
-  seekBar.value = (audio.currentTime / audio.duration) * 100 || 0;
+	// Function to update the progress bar
+	function updateProgressBar() {
+		const progress = (totalRaised / goalAmount) * 100;
+		progressBar.style.width = progress + "%";
+	}
 });
-
-seekBar.addEventListener("input", () => {
-  audio.currentTime = (seekBar.value / 100) * audio.duration;
-});
-
-volumeBar.addEventListener("input", () => {
-  audio.volume = volumeBar.value;
-});
-
-searchInput.addEventListener("input", loadSongs);
-
-window.onload = () => {
-  loadSongs();
-  audio.volume = 0.5;
-};

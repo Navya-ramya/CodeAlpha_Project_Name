@@ -1,47 +1,187 @@
 body {
-  font-family: Arial, sans-serif;
-  background: #f0f4ff;
-  color: #333;
-  padding: 2rem;
-  text-align: center;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background:linear-gradient(0deg,
+    rgb(64, 192, 0) 0%, rgb(64, 192, 0));
+    color: white;
+}
+
+header {
+    margin: 8px 62px;
+    padding: 0;
+    /* background-color: rgb(117, 229, 61); */
+    height: 14vh;
+    border: 0px none rgba(100, 100, 100, 0);
+    border-radius: 20px;
+}
+
+.outer-div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.title {
+    font-size: 30px;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.head-bck {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+main {
+    background:
+        linear-gradient(0deg,
+            rgb(125, 238, 26) 0%, rgb(125, 238, 26));
+    margin: 28px 60px;
+    background-color: rgb(237, 190, 190);
+    color: #056adc;
+    padding: 20px;
+    border-radius: 5px;
+    height: 61vh;
+    width: 50%;
+    box-shadow: 0 0 10px rgba(120, 89, 89, 0.2);
+
+}
+
+.main-bck {
+    height: 96%;
+    padding: 10px 10px;
+    border-radius: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+#goal {
+    color: #ff076f;
+    font-size: 30px;
+    font-weight: 700;
 }
 
 .container {
-  max-width: 500px;
-  margin: auto;
-  background: white;
-  padding: 1rem;
-  border-radius: 10px;
-  box-shadow: 0 0 10px #ccc;
+    text-align: center;
 }
 
-input[type="text"] {
-  width: 100%;
-  padding: 0.5rem;
-  margin-bottom: 1rem;
+.project-details {
+    border: 0px none rgba(100, 100, 100, 0);
+    border-radius: 24px;
+    text-align: center;
+    padding: 1px;
+    font-size: 25px;
 }
 
-#songList {
-  list-style: none;
-  padding: 0;
-  max-height: 150px;
-  overflow-y: auto;
-  margin-bottom: 1rem;
+.project-details h2 {
+    font-size: 45px;
+    color: rgb(13, 5, 252);
 }
 
-#songList li {
-  padding: 0.5rem;
-  cursor: pointer;
+.contribute-form h3 {
+
+    color: crimson;
+    font-weight: 100px;
+    font-size: 30px;
 }
 
-#songList li:hover {
-  background: #eef;
+.total-raised h2 {
+    color: orangered;
+    font-weight: 700;
+    margin-bottom: 0;
 }
 
-.controls {
-  margin: 1rem 0;
+#total-amount {
+    font-weight: 700;
+    font-size: 25px;
+    color: rgb(223, 28, 7);
+    margin-top: -15px;
 }
 
-.volume {
-  margin-top: 1rem;
+input {
+    border: 2px solid #8b036e;
+    padding: 8px 20px;
+    font-weight: 400;
+    cursor: pointer;
+}
+
+button {
+    background-color: #007bff;
+    border-radius: 5px;
+    color: white;
+    font-size: medium;
+    font-weight: 600;
+    border: none;
+    padding: 9px 20px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.cpyrght {
+    text-align: center;
+}
+
+
+@media (max-width: 510px) {
+
+    header {
+        height: 15vh;
+
+    }
+
+    .title {
+        height: 60%;
+        font-size: 35px;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    input {
+
+        margin-bottom: 10px;
+    }
+
+    main {
+        height: 88vh;
+    }
+
+}
+
+@media (max-width: 385px) {
+    header {
+        height: 10vh;
+
+    }
+
+    .title {
+        height: 60%;
+        font-size: 26px;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    main {
+        height: 100vh;
+    }
+
+    input {
+        width: 100px;
+        margin-bottom: 10px;
+    }
 }
